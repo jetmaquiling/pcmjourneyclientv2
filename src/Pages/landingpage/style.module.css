@@ -1,0 +1,37 @@
+
+.animateTitle1 {
+    animation: colorchange 10s infinite alternate;
+}
+
+
+.animateTitle2 {
+    animation-delay: 5s;
+    animation: colorchange 15s infinite alternate;
+}
+
+.animateTitle3 {
+    animation-delay: 10s;
+    animation: colorchange 20s infinite alternate;
+}
+@keyframes colorchange {
+    0% {
+      color: rgb(15, 15, 15);
+    }
+    30% {
+      color: rgb(15, 15, 15);
+      
+    }
+    40% {
+      color: #d4af37d5;
+    }
+    
+    60% {
+      color: #ec113d;
+    }
+    80% {
+      color: rgb(15, 15, 15);
+    }
+    100% {
+      color: rgb(15, 15, 15);
+    }
+  }
