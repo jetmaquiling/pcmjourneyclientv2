@@ -106,7 +106,7 @@ function AuthContextProvider(props) {
 
     // Events Get Function **************************************************
     async function getEvents() {
-          axios.get(`${config.SERVER_URL}`).then(res => {
+          axios.get(`${config.SERVER_URL}/events`).then(res => {
             setEvents(res.data)
             console.log('success LogIn', res.data);
           }).catch(error=> {
