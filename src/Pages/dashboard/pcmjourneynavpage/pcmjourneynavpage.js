@@ -27,11 +27,11 @@ const useStyles = makeStyles((theme) => ({
     rootItem:{
         padding: '30px 30px 30px 30px',
         [theme.breakpoints.down('xs')]: {
-            padding: '10px 10px 10px 10px',
+            padding: '10px 10px 60px 10px',
         },
     },
     noteBox:{
-        margin: '50px 0px 20px 0px',
+        margin: '0px 0px 20px 0px',
     },
     button:{
         width: '100%',
@@ -60,11 +60,22 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default function PCMJourneyNav() {
-  const classes = useStyles();
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
 
+export default function PCMJourneyNav() {
+    const classes = useStyles();
+    const myRef = React.useRef(null)
+
+    React.useEffect(() => {
+        scrollToRef(myRef)
+    }, [])
+    
   return (
-    <Grid container className={classes.root}>
+    <Grid ref={myRef}  container className={classes.root}>
+        <Grid  item md={12} style={{padding: '70px 0px 20px 0px' , width: '100%' ,  display:'flex' , justifyContent: 'center', textAlign: 'center'}}>
+            <Typography variant='h3' color='primary'  ><b>DASHBOARD </b></Typography>
+        </Grid>
+        
 
         <Grid item md={6} className={classes.rootItem}>
             <div className={classes.noteBox}  >
@@ -106,7 +117,7 @@ export default function PCMJourneyNav() {
         
         <Grid item md={6} className={classes.rootItem}>
             <div className={classes.noteBox}  >
-                <Typography variant="body1" >Online Recordings:</Typography>
+                <Typography variant="body1" >Watch PCM Videos:</Typography>
                 <Typography variant="body2" >The main purpose of a PCM recorded video is to inspire Viewers . These videos are not meant to train employees or deliver information. Instead, they are carefully designed to inspire listeners to develop a sense of greater loyalty to the organization & renew their commitment to excellence.</Typography>
             </div>
             <Link to="/dashboard/watch">
@@ -114,7 +125,7 @@ export default function PCMJourneyNav() {
                     <div className={classes.buttonitembox}>
                         <div style={{display: 'flex',alignItems: 'center',}}>
                         <AlbumIcon className={classes.iconButton} />
-                        <Typography className={classes.textButton} variant="body1" >Online Recordings</Typography>
+                        <Typography className={classes.textButton} variant="body1" >Watch PCM Videos</Typography>
                         </div>
                         <ArrowForwardIosIcon className={classes.arrowButton} />
                     </div>

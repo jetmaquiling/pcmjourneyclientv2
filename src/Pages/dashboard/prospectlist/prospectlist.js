@@ -20,6 +20,8 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 
+import moment from 'moment';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -107,6 +109,7 @@ export default function ProspectList() {
         address: form.address,
         contact: form.contact,
         facebookname: form.facebookname,
+        PCMday: ctx.PCMday,
         createdAt: new Date(),
         users_permissions_user: ctx.user
     }, {
@@ -258,24 +261,36 @@ export default function ProspectList() {
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <div style={{width: '100%'}}>
-                                            <Typography variant='body2'>
-                                                Address: 
-                                            </Typography>
-                                            <Typography variant='body1'>
-                                                {person.address}
-                                            </Typography>
-                                            <Typography variant='body2'>
-                                                Contact: 
-                                            </Typography>
-                                            <Typography variant='body1'>
-                                                {person.contact}
-                                            </Typography>
-                                            <Typography variant='body2'>
+                                            <Typography color='primary' variant='h6'>
                                                 Facebook Account Name: 
                                             </Typography>
                                             <Typography variant='body1'>
                                                 {person.facebookname}
                                             </Typography>
+                                            <br/>
+                                            <Typography color='primary' variant='h6'>
+                                                Address: 
+                                            </Typography>
+                                            
+                                            <Typography  variant='body1'>
+                                                {person.address}
+                                            </Typography>
+                                            <br/>
+                                            <Typography color='primary' variant='h6'>
+                                                Contact: 
+                                            </Typography>
+                                            <Typography variant='body1'>
+                                                {person.contact}
+                                            </Typography>
+                                            <br/>
+                                            <Typography color='primary' variant='h6'>
+                                                Created At: 
+                                            </Typography>
+                                            <Typography variant='body1'>
+                                               PCM Journey Day {person.PCMday}
+                                            </Typography>
+                                            
+                        
                                             <div className={classes.detailsButton}>
                                                 <Button variant="outlined" color="primary" onClick={()=>{ctx.setModal({open:true, title: "Are You sure You want to permanently delete this user?",message: '', function: () => deleteProspect(person.id) }) } }>
                                                     Delete

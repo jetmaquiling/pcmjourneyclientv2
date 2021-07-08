@@ -117,7 +117,7 @@ const useStyles = makeStyles((theme) => ({
    
     margin: '0px 20px 0px 20px',
     [theme.breakpoints.down('xs')]: {
-      margin: '0px 0px 0px 0px'
+      margin: '5px 0px 0px 0px'
     },
   },
 
@@ -204,7 +204,7 @@ export default function Header (){
               <div className={classes.profileName} >
               <Typography variant="body1" className={classes.profileText}  >{ctx.user.firstName} {ctx.user.lastName}</Typography>
               <Typography variant="h3" className={classes.divider} >|</Typography>
-              <Typography variant="body1" className={classes.profileTitle}   >DASHBOARD</Typography>
+              <Typography variant="h6" className={classes.profileTitle}   >PCM JOURNEY DAY {ctx.PCMday}</Typography>
               </div>
              
             </div>

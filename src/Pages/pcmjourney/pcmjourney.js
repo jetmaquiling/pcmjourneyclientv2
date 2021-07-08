@@ -16,14 +16,15 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         backgroundImage: `url(${background})` ,
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: "top",
+        backgroundPosition: "center",
         backgroundSize: 'cover',
         textAlign: 'center',
         padding: '0px 0px 0px 0px',
         width: '100%',
-        height: '120vh',
+        height: '200vh',
         [theme.breakpoints.down('xs')]: {
             padding: '30px 0px 0px 0px',
+            height: '120vh',
         },
     },
     title:{
@@ -34,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
             fontSize: '25px'
         },
         [theme.breakpoints.down('xs')]: {
-            padding: '60px 0px 10px 0px',
+            padding: '60px 15px 10px 15px',
         },
     },
     dateBox:{
@@ -95,6 +96,7 @@ const useStyles = makeStyles((theme) => ({
         },    
     },
     buttonBox2:{
+        width: '100%',
         display: "flex",
         flexDirection: 'column',
         justifyContent:'center',
@@ -118,8 +120,9 @@ const useStyles = makeStyles((theme) => ({
         margin: '5px 0px 20px 0px',
       },
         [theme.breakpoints.down('xs')]: {
-            width: '30rem',
+            width: '100%',
             height: "5.5rem",
+            margin: '5px 0px 20px 0px',
         },    
     },
 }));
@@ -183,7 +186,7 @@ export default function ClassLink() {
       
   return (
     <div className={classes.root}>
-            <Typography variant='h3' className={classes.title} >PCM JOURNEY ONLINE CLASS IS STARTING IN : </Typography>
+            <Typography variant='h5' className={classes.title} >PCM JOURNEY ONLINE CLASS IS STARTING IN: </Typography>
             <div className={classes.dateBox}>
                 <div className={classes.dateItem}> 
                     <Typography variant='h2' className={classes.dateText}  >{Math.abs(1 - state.days)}</Typography>

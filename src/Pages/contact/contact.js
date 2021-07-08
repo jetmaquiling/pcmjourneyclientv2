@@ -12,9 +12,6 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import clsx from 'clsx';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
-import {ForEmailUsername, ForPassword} from '../../Components/helpsound/loginhelp';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import {AuthContext} from '../../Provider/context';
 import HelpIcon from '@material-ui/icons/Help';
 import Select from '@material-ui/core/Select';
@@ -32,6 +29,8 @@ import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import axios from 'axios';
 import config from '../../Config/config.json';
+
+import { useLocation } from 'react-router-dom';
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -91,12 +90,22 @@ const useStyles = makeStyles((theme) => ({
   }));
   
 
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
+
 export default function Footer () {
     const classes = useStyles();
     const ctx = useContext(AuthContext);
     const [visible, setVisible] = useState(null);
     const [form, setForm] = useState({Email: '', Name: '', Contact: '', Assistance: '', Subject: '', Message: '', Attachment: '', AttachmentPreview: ''});
-    
+    const location = useLocation()
+
+    const myRef = React.useRef(null)
+
+    React.useEffect(() => {
+        if(location.pathname === '/contact'){
+            scrollToRef(myRef)
+        }
+    }, [])
 
     const sendForm = async ()  =>  { 
         console.log(`${config.SERVER_URL}/requests`)
@@ -168,7 +177,7 @@ export default function Footer () {
 
     return (
 
-        <div className={classes.main}>
+        <div className={classes.main}  ref={myRef}>
             <Snackbar open={ctx.toaster.open} autoHideDuration={9000} onClose={ctx.handleClose}>
             <Alert onClose={ctx.handleClose} severity={ctx.toaster.status}>
                 {ctx.toaster.message}

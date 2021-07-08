@@ -3,7 +3,7 @@ import axios from 'axios';
 import config from '../Config/config.json'
 import { useHistory } from "react-router-dom";
 import { LaptopWindows } from '@material-ui/icons';
-
+import moment from 'moment';
 
 
 
@@ -35,7 +35,7 @@ export const AuthContext = React.createContext({
     setUser: () => {},
     getEvents: () => {},
     events: {},
-    
+    PCMday: "",
 });
 
 
@@ -44,6 +44,7 @@ export const AuthContext = React.createContext({
 function AuthContextProvider(props) {
     //MAIN COOKIE STORE
     const [user, setUser] = React.useState({id:""});
+    const [PCMday ,setPCMDay] = React.useState("");
     const [loggedIn, setLoggedIn] = React.useState(false);
     const [terms, setTerms] = React.useState(false);
     const [load, setLoad] = React.useState(false);
@@ -64,12 +65,12 @@ function AuthContextProvider(props) {
             const {data} = await axios.get(`${config.SERVER_URL}/users/${getCookie('id')}`, {
               headers: { Authorization: `Bearer ${jwt}` }
               });
-            setCookie('isLoggedIn','true',7);    
+            setCookie('isLoggedIn','true',1);    
             setUser(data)
             setUser({...data, ProfilePicture : data.ProfilePicture.url})
-            setLoad(false)
+            getPCMDay(data.startJourney)
           }catch(error){
-            setLoad(false)
+  
             setCookie('isLoggedIn','false',0);
             setCookie('token','',0);  
             window.location.replace("/")
@@ -79,11 +80,10 @@ function AuthContextProvider(props) {
       
 
       if(getCookie('isLoggedIn') === "true" ){
-        setLoad(true)
         //console.log(getCookie('token'));
         persist(getCookie('token'));
         setLoggedIn(true);
-        setLoad(false)
+       
         
       }
       getEvents();
@@ -106,6 +106,18 @@ function AuthContextProvider(props) {
     };
   
     // Confirmation MODAL********************************************************
+    
+
+    // Get PCM DAY ALGO ***************************************************
+      function getPCMDay(start) {
+        const date = moment(start);
+        const then = moment(date.format("MM DD YYYY"), "MM DD YYYY");
+        const now = moment();
+        const count = moment(now - then);
+        const day = count.format('D');
+        setPCMDay(day)
+        console.log(day)
+    }
 
 
     // Events Get Function **************************************************
@@ -160,9 +172,9 @@ function AuthContextProvider(props) {
 
 
             const json = await data;
-            setCookie('token',json.jwt,7);
-            setCookie('id',json.user.id,7);
-            setCookie('isLoggedIn','true',7);
+            setCookie('token',json.jwt,1);
+            setCookie('id',json.user.id,1);
+            setCookie('isLoggedIn','true',1);
             // console.log('success LogIn', json);
             setUser(json.user)
             setLoggedIn(true)
@@ -362,6 +374,7 @@ function AuthContextProvider(props) {
         events: events,
         setUser: setUser,
         videos: videos,
+        PCMday: PCMday,
     }}
     
   >
