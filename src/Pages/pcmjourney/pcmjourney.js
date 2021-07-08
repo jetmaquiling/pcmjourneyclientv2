@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
             fontSize: '25px'
         },
         [theme.breakpoints.down('xs')]: {
-            padding: '40px 0px 10px 0px',
+            padding: '60px 0px 10px 0px',
         },
     },
     dateBox:{
@@ -73,12 +73,12 @@ const useStyles = makeStyles((theme) => ({
        
         [theme.breakpoints.down('sm')]: {
             flexDirection: 'column',
-            margin: '50px 20px 20px 20px',
+            margin: '120px 20px 20px 20px',
             justifyContent: 'center',
             alignItems: 'center',
           },
         [theme.breakpoints.down('xs')]: {
-            
+           
             
           },        
     },
@@ -101,12 +101,12 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         margin: '100px 0px 0px 0px',
         [theme.breakpoints.down('sm')]: {
-            margin: '50px 20px 20px 20px',
+            margin: '60px 20px 20px 20px',
             justifyContent: 'center',
             
           },
         [theme.breakpoints.down('xs')]: {
-            margin: '50px 5px 20px 5px',
+            margin: '150px 5px 10px 5px',
             
           },        
     },
@@ -145,7 +145,7 @@ export default function ClassLink() {
     // }, [])
 
     React.useEffect(() => {
-        if(ctx.events){
+        if(ctx.events.PCMdate){
             setInterval(() => {
                 const date = moment(ctx.events.PCMdate);
                 const then = moment(date.format("MM DD YYYY, h:mm a"), "MM DD YYYY, h:mm a");
@@ -157,6 +157,13 @@ export default function ClassLink() {
                 const seconds = countdown.format('ss');
                 setState({ days, hours, minutes, seconds });
             }, 1000);
+        }else{
+            ctx.getEvents()
+            const days = 1
+            const hours = 7
+            const minutes = 0 
+            const seconds = 0
+            setState({ days, hours, minutes, seconds });
         }
     }, [])
 
@@ -212,8 +219,9 @@ export default function ClassLink() {
 
             <div className={classes.buttonBox2} style={{display:(!ctx.loggedIn && 'none')}}>
                     <a href={ctx.events.PCMlink} >
-                        <Button variant="contained" color="primary" className={classes.appButton2} >
-                            Open Zoom Meeting Now
+                        <Button variant="contained" color="secondary" className={classes.appButton2} >
+                            <Typography variant='h6' color="primary"  >  Open Zoom Meeting Now</Typography>
+                          
                         </Button>
                     </a>
                     {/* <Button onClick={copyCodeToClipboard} style={{backgroundColor: (link && '#79ce638e') }} variant="contained" color="secondary" className={classes.appButton2} >

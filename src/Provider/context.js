@@ -67,19 +67,23 @@ function AuthContextProvider(props) {
             setCookie('isLoggedIn','true',7);    
             setUser(data)
             setUser({...data, ProfilePicture : data.ProfilePicture.url})
+            setLoad(false)
           }catch(error){
+            setLoad(false)
             setCookie('isLoggedIn','false',0);
             setCookie('token','',0);  
+            window.location.replace("/")
           }
          
       }
       
 
       if(getCookie('isLoggedIn') === "true" ){
-        
+        setLoad(true)
         //console.log(getCookie('token'));
         persist(getCookie('token'));
         setLoggedIn(true);
+        setLoad(false)
         
       }
       getEvents();

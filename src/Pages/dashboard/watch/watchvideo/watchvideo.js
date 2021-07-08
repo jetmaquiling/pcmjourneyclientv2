@@ -50,7 +50,16 @@ const useStyles = makeStyles((theme) => ({
           },
     },
     describeBox:{
-        margin: '10px 5px',
+        margin: '10px 200px',
+        [theme.breakpoints.down('md')]: {
+          margin: '10px 150px',
+        },
+      [theme.breakpoints.down('sm')]: {
+          margin: '10px 10px',
+        },
+      [theme.breakpoints.down('xs')]: {
+           margin: '10px 10px',
+        },
     } 
  }));
 

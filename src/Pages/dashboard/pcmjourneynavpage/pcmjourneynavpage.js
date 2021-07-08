@@ -127,7 +127,7 @@ export default function PCMJourneyNav() {
                 <Typography variant="body1" >My Dreambook:</Typography>
                 <Typography variant="body2" > Excuses are thieves that steal your dreams. Discouraging thoughts have the power to turn dreams into dust. The Dreambook is fitted with positive messages and reminders to free your mind from troubling roadblocks and bust bad influences for good. It’s like receiving pieces of advice from a trustworthy friend who can push you to ditch the things that hold you back and make you quit up on your goals.</Typography>
             </div>
-            <Link to="/construction">
+            
                 <Button variant="contained" className={classes.button}  >
                     <div className={classes.buttonitembox}>
                         <div style={{display: 'flex',alignItems: 'center',}}>
@@ -137,7 +137,7 @@ export default function PCMJourneyNav() {
                         <ArrowForwardIosIcon className={classes.arrowButton} />
                     </div>
                 </Button>
-            </Link>
+           
         </Grid>
 
         <Grid item md={6} className={classes.rootItem}>
@@ -145,7 +145,7 @@ export default function PCMJourneyNav() {
                 <Typography variant="body1" >PCM Journey Task:</Typography>
                 <Typography variant="body2" > Why should you do the PCM task? So you don’t waste time working out where you were, to get the wonderful glow when you know you’ve really completed a task,and to feel more in control of the pace of your success .So, in summary, if I complete more tasks I will have more time to do things I really want. It sounds so good from now I’m going to focus on completing tasks.</Typography>
             </div>
-            <Link to="/construction">
+            
             <Button variant="contained" className={classes.button}  >
                 <div className={classes.buttonitembox}>
                     <div style={{display: 'flex',alignItems: 'center',}}>
@@ -155,7 +155,7 @@ export default function PCMJourneyNav() {
                     <ArrowForwardIosIcon className={classes.arrowButton} />
                 </div>
             </Button>
-            </Link>
+            
         </Grid>
 
         <Grid item md={6} className={classes.rootItem}>
@@ -163,7 +163,7 @@ export default function PCMJourneyNav() {
                 <Typography variant="body1" >Book Quiz:</Typography>
                 <Typography variant="body2" > If there is one thing business books will do without fail it is to provide you with business acumen. They will teach you the common business concepts you need to be fluent in conversations with other business people. Reading widely will introduce you to concepts with which you are not yet familiar. </Typography>
             </div>
-            <Link to="/construction">
+           
             <Button variant="contained" className={classes.button}  >
                 <div className={classes.buttonitembox}>
                     <div style={{display: 'flex',alignItems: 'center',}}>
@@ -173,16 +173,16 @@ export default function PCMJourneyNav() {
                     <ArrowForwardIosIcon className={classes.arrowButton} />
                 </div>
             </Button>
-            </Link>
+           
         </Grid>
 
 
-        <Grid item md={6} className={classes.rootItem} className={classes.rootItem}>
+        <Grid item md={6} className={classes.rootItem} d>
             <div className={classes.noteBox}  >
                 <Typography variant="body1" >PHBWorx Events:</Typography>
                 <Typography variant="body2" > If you invest the time and money to attend a live event that offers value for your small business, you can almost guarantee that you will return home with new tools, valuable contacts and a renewed approach that will help you manage and grow your business better than before.</Typography>
             </div>
-            <Link to="/construction">
+            
             <Button variant="contained" className={classes.button}  >
                 <div className={classes.buttonitembox}>
                     <div style={{display: 'flex',alignItems: 'center',}}>
@@ -192,7 +192,7 @@ export default function PCMJourneyNav() {
                     <ArrowForwardIosIcon className={classes.arrowButton} />
                 </div>
             </Button>
-            </Link>
+           
         </Grid>
 
         <Grid item md={6} className={classes.rootItem}>
@@ -200,7 +200,7 @@ export default function PCMJourneyNav() {
                 <Typography variant="body1" >Car Incentives Program:</Typography>
                 <Typography variant="body2" > Inspiration awakens us to new possibilities by allowing us to transcend our ordinary experiences and limitations. Inspiration propels a person from apathy to possibility, and transforms the way we perceive our own capabilities. Inspiration may sometimes be overlooked because of its elusive nature.</Typography>
             </div>
-            <Link to="/construction">
+           
             <Button variant="contained" className={classes.button}  >
                 <div className={classes.buttonitembox}>
                     <div style={{display: 'flex',alignItems: 'center',}}>
@@ -210,7 +210,7 @@ export default function PCMJourneyNav() {
                     <ArrowForwardIosIcon className={classes.arrowButton} />
                 </div>
             </Button>
-            </Link>
+           
         </Grid>
 
 
@@ -220,7 +220,6 @@ export default function PCMJourneyNav() {
                 <Typography variant="body1" >Contact Us:</Typography>
                 <Typography variant="body2" > Are you a user with questions about PCM Journey? We’re ready to help.The more we help, the happier we feel. Volunteering increases self-confidence. You are doing good for us and the community, which provides a natural sense of accomplishment. Your role as a PCM Journey participant also give us a sense of pride and honor.</Typography>
             </div>
-            <Link to="/contact">
             <Button variant="contained" className={classes.button}  >
                 <div className={classes.buttonitembox}>
                     <div style={{display: 'flex',alignItems: 'center',}}>
@@ -230,7 +229,7 @@ export default function PCMJourneyNav() {
                     <ArrowForwardIosIcon className={classes.arrowButton} />
                 </div>
             </Button>
-            </Link>
+    
         </Grid>
 
 

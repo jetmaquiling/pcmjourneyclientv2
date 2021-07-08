@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
         width: '50%',
         margin: '0px 10px 30px 10px',
         [theme.breakpoints.down('sm')]: {
-            width: '100%',
+            width: '95%',
         },    
     },
     box:{
@@ -54,7 +54,10 @@ const useStyles = makeStyles((theme) => ({
         margin: '20px 0px'
     },
     itemBox:{
-        padding: '10px 20px'
+        padding: '10px 20px',
+        [theme.breakpoints.down('sm')]: {
+            padding: '10px 10px',
+        },    
     },
     detailsButton:{
         marginTop: '20px',
@@ -138,15 +141,15 @@ export default function ProspectList() {
     return (
         <div className={classes.root}>
             <div  className={classes.inputBox}>
-            <Accordion  >
+            <Accordion color='primary'  >
                 <AccordionSummary
-                expandIcon={<AddIcon />}
+                expandIcon={<AddIcon  color="primary" />}
                 aria-controls="panel1a-content"
                 id="panel1a-header"
                 >
                 <div className={classes.inputLabel}>
-                    <PersonAddIcon style={{ margin: '0px 10px'}}/>
-                    <Typography className={classes.heading}>Add Prospect</Typography>
+                    <PersonAddIcon color="primary" style={{ margin: '0px 10px'}}/>
+                    <Typography  color="primary" className={classes.heading}>Add Prospect</Typography>
                 </div>
                 
                 </AccordionSummary>
@@ -240,7 +243,7 @@ export default function ProspectList() {
                             <Grid key={index} item md={6}  xs={12} className={classes.itemBox}>
                                 <Accordion>
                                     <AccordionSummary
-                                        expandIcon={<ExpandMoreIcon />}
+                                        expandIcon={<ExpandMoreIcon  color="primary" />}
                                         aria-label="Expand"
                                         aria-controls="additional-actions1-content"
                                         id="additional-actions1-header"
