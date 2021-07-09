@@ -138,7 +138,7 @@ export default function BlogPage() {
                         <img  className={classes.image} src={blog.clipboard} />
                     </div>
 
-                    <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjetzrecords.com%2Fblog%2f${id}amp;src=sdkpreparse`}>
+                    <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjetzrecords.com%2Fblog%2f${id}%2fnice&amp;src=sdkpreparse`}>
                             <Button variant="contained" style={{float: 'right',backgroundColor: '#3b5998' ,color: '#fff', margin: '5px'}} >
                                 <FacebookIcon/> Share
                             </Button>
