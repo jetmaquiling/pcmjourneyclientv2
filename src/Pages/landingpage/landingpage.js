@@ -7,7 +7,7 @@ import animation from './style.module.css';
 import moment from 'moment';
 import PCMGold from '../../Resources/Images/PCMLOGO.png';
 import Contact from '../../Pages/contact/contact';
-import { Helmet } from "react-helmet";
+import { MetaTags } from "react-helmet";
 import PCMSnippet from './PCMSnippet.png';
 // xs: 0,
 // sm: 600,
@@ -275,13 +275,13 @@ export default function LandingPage () {
 
     return (
         <div className={classes.root} >
-            <Helmet>
+            <MetaTags>
                 <meta property="og:url" content="https://jetzrecords.com/" />
                 <meta property="og:type"               content="article" />
                 <meta property="og:title"              content="PCM Journey" />
                 <meta property="og:description"        content="The PCM Journey is for those who want to go through a training that will give them a significant result in the end."/>
                 <meta property="og:image"    content={PCMSnippet} />
-            </Helmet>
+            </MetaTags>
             <div className={classes.firstSection} >
                 <div className={classes.title} >
                     <Typography variant="h1" className={[classes.h1 , animation.animateTitle1].join(' ')} >THE</Typography>

@@ -8,7 +8,7 @@ import axios from 'axios';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
-import { Helmet } from "react-helmet";
+import MetaTags from 'react-meta-tags';
 
 import Button from '@material-ui/core/Button';
 import FacebookIcon from '@material-ui/icons/Facebook';
@@ -110,13 +110,13 @@ export default function BlogPage() {
 
             <div className={classes.root}>
 
-                <Helmet>
+                <MetaTags>
                     <meta property="og:type" content="website" />
                     <title>{blog.title}</title>
                     <meta property="og:title" content={blog.title} />
                     <meta property="og:image" content={blog.thumbnail} />
                     <meta property="og:description" content={blog.description} />
-                </Helmet>
+                </MetaTags>
 
                 <div  className={classes.main}>
                     <Typography variant="h6" >Published At {moment(blog.published_at).format("MMMM DD, YYYY")}</Typography>
