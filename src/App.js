@@ -35,7 +35,8 @@ import ClassLink from "./Pages/pcmjourney/pcmjourney";
 import Watch from './Pages/dashboard/watch/watch';
 import {AuthContext} from './Provider/context'
 import Construction from "./Pages/construction/construction";
-
+import Blog from './Pages/blog/blog';
+import BlogPage from "./Pages/blog/page/blogpage";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -98,18 +99,32 @@ function App() {
                 <Route path="/signup">
                   <SignUp />
                 </Route>
+
+               
                 <Route path="/login">
                   <LogIn />
                 </Route >
+
                 <Route path="/contact">
                   <Contact />
                 </Route>
-                <Route path="/dashboard" exact>
-                <Dashboard />
-                </Route>
+
                 <Route path="/pcmjourney" >
                   <ClassLink/>
                 </Route>
+
+                <Route path="/blog" exact>
+                  <Blog/>
+                </Route>
+
+                <Route path="/blog/:id">
+                  <BlogPage/>
+                </Route>
+
+                <Route path="/dashboard" exact>
+                <Dashboard />
+                </Route>
+                
                  <Route path="/dashboard/prospectlist">
                     <ProspectList/>
                  </Route>

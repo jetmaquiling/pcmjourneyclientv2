@@ -22,3 +22,14 @@ body{
   background-size: cover;
   background-image: url('./Large-Triangles\ \(1\).svg');
 }
+
+h2{
+  font-size: 2.5rem;
+}
+p{
+  font-size: 1.7rem;
+}
+img{
+  width: 100%;
+  height: 50%;
+}

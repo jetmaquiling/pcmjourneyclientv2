@@ -31,7 +31,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import HowToRegIcon from '@material-ui/icons/HowToReg';
 import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
-
+import BookIcon from '@material-ui/icons/Book';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -165,6 +165,11 @@ export default function Header (){
             </div>
 
             <div   >
+              <Link to='/blog'>
+                  <Button color={"#000"} className={classes.appButton} >
+                      Blogs
+                  </Button>
+              </Link>
               <Link to='/pcmjourney'>
                   <Button color={"#000"} className={classes.appButton} >
                       About
@@ -321,6 +326,15 @@ export default function Header (){
                               <ArrowForwardIosIcon color="primary" style={{margin:'0px 0px 0px 30px'}} />
                         </ListItem>
                       </Link>
+
+                      <Link to='/blog'>
+                        <ListItem button >
+                              <ListItemIcon><BookIcon color="primary" /></ListItemIcon>
+                              <ListItemText primary={"Blogs"} /> 
+                              <ArrowForwardIosIcon color="primary" style={{margin:'0px 0px 0px 30px'}} />
+                        </ListItem>
+                      </Link>
+
 
                       <Link to='/about'>
                         <ListItem button >

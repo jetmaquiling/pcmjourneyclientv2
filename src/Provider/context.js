@@ -67,7 +67,7 @@ function AuthContextProvider(props) {
             const {data} = await axios.get(`${config.SERVER_URL}/users/${getCookie('id')}`, {
               headers: { Authorization: `Bearer ${jwt}` }
               });
-            setCookie('isLoggedIn','true',1);    
+            setCookie('isLoggedIn','true',7);    
             setUser(data)
             setUser({...data, ProfilePicture : data.ProfilePicture.url})
             getPCMDay(data.startJourney)
@@ -178,9 +178,9 @@ function AuthContextProvider(props) {
 
 
             const json = await data;
-            setCookie('token',json.jwt,1);
-            setCookie('id',json.user.id,1);
-            setCookie('isLoggedIn','true',1);
+            setCookie('token',json.jwt,7);
+            setCookie('id',json.user.id,7);
+            setCookie('isLoggedIn','true',7);
             // console.log('success LogIn', json);
             setUser(json.user)
             setLoggedIn(true)

@@ -72,9 +72,6 @@ export default function PCMJourneyNav() {
     
   return (
     <Grid ref={myRef}  container className={classes.root}>
-        <Grid  item md={12} style={{padding: '70px 0px 20px 0px' , width: '100%' ,  display:'flex' , justifyContent: 'center', textAlign: 'center'}}>
-            <Typography variant='h3' color='primary'  ><b>DASHBOARD </b></Typography>
-        </Grid>
         
 
         <Grid item md={6} className={classes.rootItem}>
@@ -134,6 +131,25 @@ export default function PCMJourneyNav() {
         </Grid>
 
         <Grid item md={6} className={classes.rootItem}>
+            <div className={classes.noteBox}  >
+                <Typography variant="body1" >Every Journey Has A Story:</Typography>
+                <Typography variant="body2" > Good inspirational stories and quotes are a great way to uplift our soul fill it with hope and optimism. Stories are a powerful tool to touch our heart. A good inspirational story motivates us to keep fighting for our heart's desires and dream. An inspirational story can be happy, sad, motivating, or even depressing. The inspirational stories are key to building our character and make us what we are today.</Typography>
+            </div>
+
+            <Link to="/blog">
+                <Button variant="contained" className={classes.button}  >
+                    <div className={classes.buttonitembox}>
+                        <div style={{display: 'flex',alignItems: 'center',}}>
+                        <LocalLibraryIcon className={classes.iconButton} />
+                        <Typography className={classes.textButton} variant="body1" >PCM Journey Blogs</Typography>
+                        </div>
+                        <ArrowForwardIosIcon className={classes.arrowButton} />
+                    </div>
+                </Button>
+            </Link>
+        </Grid>
+
+        {/* <Grid item md={6} className={classes.rootItem}>
             <div className={classes.noteBox}  >
                 <Typography variant="body1" >My Dreambook:</Typography>
                 <Typography variant="body2" > Excuses are thieves that steal your dreams. Discouraging thoughts have the power to turn dreams into dust. The Dreambook is fitted with positive messages and reminders to free your mind from troubling roadblocks and bust bad influences for good. It’s like receiving pieces of advice from a trustworthy friend who can push you to ditch the things that hold you back and make you quit up on your goals.</Typography>
@@ -224,24 +240,26 @@ export default function PCMJourneyNav() {
            
         </Grid>
 
-
-
-        <Grid item md={6} className={classes.rootItem}>
-            <div className={classes.noteBox}  >
-                <Typography variant="body1" >Contact Us:</Typography>
-                <Typography variant="body2" > Are you a user with questions about PCM Journey? We’re ready to help.The more we help, the happier we feel. Volunteering increases self-confidence. You are doing good for us and the community, which provides a natural sense of accomplishment. Your role as a PCM Journey participant also give us a sense of pride and honor.</Typography>
-            </div>
-            <Button variant="contained" className={classes.button}  >
-                <div className={classes.buttonitembox}>
-                    <div style={{display: 'flex',alignItems: 'center',}}>
-                    <ContactMailIcon className={classes.iconButton} />
-                    <Typography className={classes.textButton} variant="body1" >Contact Us</Typography>
-                    </div>
-                    <ArrowForwardIosIcon className={classes.arrowButton} />
+ */}
+        <Link to="/contact">
+            <Grid item md={6} className={classes.rootItem}>
+                <div className={classes.noteBox}  >
+                    <Typography variant="body1" >Contact Us:</Typography>
+                    <Typography variant="body2" > Are you a user with questions about PCM Journey? We’re ready to help.The more we help, the happier we feel. Volunteering increases self-confidence. You are doing good for us and the community, which provides a natural sense of accomplishment. Your role as a PCM Journey participant also give us a sense of pride and honor.</Typography>
                 </div>
-            </Button>
-    
-        </Grid>
+                
+                <Button variant="contained" className={classes.button}  >
+                    <div className={classes.buttonitembox}>
+                        <div style={{display: 'flex',alignItems: 'center',}}>
+                        <ContactMailIcon className={classes.iconButton} />
+                        <Typography className={classes.textButton} variant="body1" >Contact Us</Typography>
+                        </div>
+                        <ArrowForwardIosIcon className={classes.arrowButton} />
+                    </div>
+                </Button>
+        
+            </Grid>
+        </Link>
 
 
 
