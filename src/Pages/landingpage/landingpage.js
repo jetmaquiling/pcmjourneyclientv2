@@ -7,7 +7,7 @@ import animation from './style.module.css';
 import moment from 'moment';
 import PCMGold from '../../Resources/Images/PCMLOGO.png';
 import Contact from '../../Pages/contact/contact';
-import { MetaTags } from "react-helmet";
+import MetaTags from 'react-meta-tags';
 import PCMSnippet from './PCMSnippet.png';
 // xs: 0,
 // sm: 600,

@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
         alignContent: 'center',
         overflow: 'hidden',
         [theme.breakpoints.down('sm')]: {
-            width: '30%',
+            width: '50%',
         },
         // [theme.breakpoints.down('md')]: {
         //     width: '50%',
@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('md')]: {
             width: '60%',
         },
-        [theme.breakpoints.down('md')]: {
+        [theme.breakpoints.down('sm')]: {
             width: '70%',
         },
         
@@ -92,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
             fontSize: '40px'
         },
         [theme.breakpoints.down('xs')]: {
-            fontSize: '30px'
+            fontSize: '25px'
         },
     },
 
