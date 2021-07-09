@@ -2,7 +2,7 @@ import React, {useEffect, useContext} from 'react';
 
 import { useParams } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
-
+import IconButton from '@material-ui/core/IconButton';
 import config from '../../../Config/config.json';
 import axios from 'axios';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -35,7 +35,9 @@ const useStyles = makeStyles((theme) => ({
         margin: '5px'
     },
     content:{
-        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        width: '95%',
         margin: "10px"
     },
     
@@ -69,15 +71,27 @@ const useStyles = makeStyles((theme) => ({
     title:{
         fontSize: '50px',
         [theme.breakpoints.down('xs')]: {
-            fontSize: '35px'
+            fontSize: '35px',
+            margin: '0px 0px 20px 0px'
         },
     },
     author:{
-        margin: '10px',
+        margin: '5px',
         display: 'flex',
        alignItems: 'center',
-    }
-       
+    },
+    buttonBig:{
+        [theme.breakpoints.down('xs')]: {
+            display: 'none',
+        },
+    },
+    buttonSmall:{
+        display: 'none',
+        [theme.breakpoints.down('xs')]: {
+            display: 'block',
+        },
+    },
+
   
  }));
 
@@ -93,8 +107,14 @@ export default function BlogPage() {
         async function getBlog() { 
             const {data} = await axios.get(`${config.SERVER_URL}/blogs/${id}`);
             setBlog(data)
-            setBlog({...data, clipboard: data.clipboard.url, thumbnail: data.clipboard.formats.thumbnail.url  })
+            const url = `"${data.title.replaceAll(' ', '%20')}"%0ABy%20${data.author.replaceAll(' ', '%20')}%0D%0A${data.description.replaceAll(' ', '%20')}`
+            setBlog({...data, 
+                clipboard: data.clipboard.url, 
+                thumbnail: data.clipboard.formats.thumbnail.url,
+                urltitle : url
+            })
             console.log(blog)
+            
         }
         getBlog()
 
@@ -104,29 +124,65 @@ export default function BlogPage() {
         navigator.clipboard.writeText(`https://jetzrecords.com/blog/${id}`)
         setLink(true)
       }
-
+      
     if(blog){
         return (
 
             <div className={classes.root}>
 
-                <MetaTags>
+                {/* <MetaTags>
                     <meta property="og:type" content="website" />
                     <title>{blog.title}</title>
                     <meta property="og:title" content={blog.title} />
                     <meta property="og:image" content={blog.thumbnail} />
                     <meta property="og:description" content={blog.description} />
-                </MetaTags>
+                </MetaTags> */}
 
                 <div  className={classes.main}>
-                    <Typography variant="h6" >Published At {moment(blog.published_at).format("MMMM DD, YYYY")}</Typography>
-                    <Typography variant="h2" className={classes.title}>{blog.title}</Typography>
+                    <Typography variant="h6" >Published {moment(blog.published_at).fromNow()} ...</Typography>
+                    <Typography variant="h2" color="primary" className={classes.title}>{blog.title}</Typography>
                     <Typography variant="caption" >{blog.description}</Typography>
+                    <br/>
+                    <br/>
+                    <div className={classes.author1}>
+                        <div className={classes.author}>
+                            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" width="45" height="45"><mask id="mask__beam" maskUnits="userSpaceOnUse" x="0" y="0" width="36" height="36"><rect width="36" height="36" fill="white" rx="72"></rect></mask><g mask="url(#mask__beam)"><rect width="36" height="36" fill="#f85931"></rect><rect x="0" y="0" width="36" height="36" transform="translate(9 9) rotate(59 18 18) scale(1.2)" fill="#009989" rx="6"></rect><g transform="translate(4.5 4.5) rotate(9 18 18)"><path d="M13,21 a1,0.75 0 0,0 10,0" fill="white"></path><rect x="10" y="14" width="1.5" height="2" rx="1" stroke="none" fill="white"></rect><rect x="24" y="14" width="1.5" height="2" rx="1" stroke="none" fill="white"></rect></g></g></svg> 
+                            
+                            <Typography variant="h6" style={{margin: '10px'}}>By {blog.author}</Typography>
 
-                    <div className={classes.author}>
-                        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" width="50" height="50"><mask id="mask__beam" maskUnits="userSpaceOnUse" x="0" y="0" width="36" height="36"><rect width="36" height="36" fill="white" rx="72"></rect></mask><g mask="url(#mask__beam)"><rect width="36" height="36" fill="#f85931"></rect><rect x="0" y="0" width="36" height="36" transform="translate(9 9) rotate(59 18 18) scale(1.2)" fill="#009989" rx="6"></rect><g transform="translate(4.5 4.5) rotate(9 18 18)"><path d="M13,21 a1,0.75 0 0,0 10,0" fill="white"></path><rect x="10" y="14" width="1.5" height="2" rx="1" stroke="none" fill="white"></rect><rect x="24" y="14" width="1.5" height="2" rx="1" stroke="none" fill="white"></rect></g></g></svg> 
+                        </div>
+
+
+                        <div className={classes.buttonBig}>
+                            <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjetzrecords.com%2Fblog%2f${id}%2fnice&amp;src=sdkpreparse&quote=${blog.urltitle}`}>
+
+                            
+                            <Button variant="contained" style={{float: 'right',backgroundColor: '#3b5998' ,color: '#fff', margin: '5px'}} >
+                                <FacebookIcon/> Share
+                            </Button>
+                            </a>
+
+
+                            <Button onClick={copyCodeToClipboard} variant="contained" color={!link ? 'primary' : "secondary"} style={{float: 'right' , margin: '5px'}} >
+                            <ShareIcon/> {!link ? 'Copy Link' : "Copied"}
+                            </Button>
+
                         
-                        <Typography variant="h6" style={{margin: '10px'}}>By {blog.author}</Typography>
+
+                        </div>
+                        <div className={classes.buttonSmall}>
+                            <IconButton onClick={copyCodeToClipboard} variant="contained" color={!link ? 'secondary' : "#00FF00"} style={{float: 'right' , margin: '5px', backgroundColor: '#EC113E'}}>
+                                <ShareIcon />
+                            </IconButton>
+
+                            <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjetzrecords.com%2Fblog%2f${id}%2fnice&amp;src=sdkpreparse&quote=${blog.urltitle}`}>
+                            <IconButton variant="contained" style={{float: 'right',backgroundColor: '#3b5998' ,color: '#fff', margin: '5px'}}>
+                                <FacebookIcon/>
+                            </IconButton>
+                            </a>
+                        </div>
+                       
+
                     </div>
                    
                    
@@ -138,23 +194,13 @@ export default function BlogPage() {
                         <img  className={classes.image} src={blog.clipboard} />
                     </div>
 
-                    <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjetzrecords.com%2Fblog%2f${id}%2fnice&amp;src=sdkpreparse`}>
-                            <Button variant="contained" style={{float: 'right',backgroundColor: '#3b5998' ,color: '#fff', margin: '5px'}} >
-                                <FacebookIcon/> Share
-                            </Button>
-                    </a>
-
                     
-                    <Button onClick={copyCodeToClipboard} variant="contained" color={!link ? 'primary' : "secondary"} style={{float: 'right' , margin: '5px'}} >
-                        <ShareIcon/> {!link ? 'Copy Link' : "Copied"}
-                    </Button>
 
                 </div>
                
     
-                <div className={classes.content}>
-                    <div dangerouslySetInnerHTML={{__html: `${blog.content}`}} />
-                </div>
+                
+                <div className={classes.content} dangerouslySetInnerHTML={{__html: `${blog.content}`}} />
                 
                 
                 
