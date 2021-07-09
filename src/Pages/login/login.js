@@ -110,12 +110,12 @@ export default function Login () {
                     
                         <div style={{display:'flex', justifyContent:'space-between',marginTop: '10px'}}>
                             <div>
-                                <Link to='/dashboard'>
+                                <Link to='/contact'>
                                     <Typography variant="subtitle2" >forgot password? </Typography>
                                 </Link>
                             </div>
                             <div>
-                                <Link to='/dashboard'>
+                                <Link to='/signup'>
                                     <Typography variant="subtitle2" >Don't have an account yet? </Typography>
                                 </Link>
                             </div>

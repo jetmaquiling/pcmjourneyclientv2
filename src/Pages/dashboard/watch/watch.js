@@ -11,10 +11,12 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-
+import IconButton from '@material-ui/core/IconButton';
 import { Link } from '@material-ui/core';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useHistory } from "react-router-dom";
 import moment from 'moment';
+import Collapse from '@material-ui/core/Collapse';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -42,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Watch() {
     const classes = useStyles();
     const ctx = useContext(AuthContext);
+    const [expanded, setExpanded] = React.useState(false);
     const [video , setVideo] = React.useState([]);
     let history = useHistory();
 
@@ -56,25 +59,43 @@ export default function Watch() {
         getVideo()
     }, [])
 
+    const handleExpandClick = () => {
+        setExpanded(!expanded);
+      };
+
     return (
         <div className={classes.root}>
             {video.map((vid, index)=>{
                 return (
                     <Card key={index} className={classes.cardroot}>
-                            <CardActionArea onClick={()=>history.push(`/dashboard/watch/${index}`)}>
-                                <CardMedia
-                                component="img"
-                                alt={vid.title}
-                                height="250"
-                                image={vid.clipboard.url}
-                                title={vid.title}
-                                />
-                                <CardContent>
-                                    <Typography gutterBottom variant="h5" component="h2">
-                                        {vid.title} - {moment(vid.date).format('MMMM DD, YYYY')}
-                                    </Typography>
-                                </CardContent>
-                            </CardActionArea>
+                                <CardActionArea>
+                                    <CardMedia
+                                    component="img"
+                                    alt={vid.title}
+                                    height="250"
+                                    image={vid.clipboard.url}
+                                    title={vid.title}
+                                    />
+                                    <CardContent>
+                                        <Typography  variant="h5" component="h2">
+                                            {vid.title} 
+                                        </Typography>
+                                        <Typography  variant="h6" component="h2">
+                                            {moment(vid.date).format('MMMM DD, YYYY')}
+                                        </Typography>
+                                        <Typography  variant="caption" component="h2">
+                                           {vid.description}
+                                        </Typography>
+                                    </CardContent>
+                                </CardActionArea>
+                                <CardActions>
+                                            <Button size="large" color="primary" >
+                                                 <Link href={vid.url}>
+                                                    <Typography variant="h6" component="h2"> Watch Now </Typography>
+                                                </Link>
+                                            </Button>
+                                </CardActions>
+
                     </Card>
 
                 )

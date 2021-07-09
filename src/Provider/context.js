@@ -36,6 +36,7 @@ export const AuthContext = React.createContext({
     getEvents: () => {},
     events: {},
     PCMday: "",
+    live: null,
 });
 
 
@@ -43,7 +44,7 @@ export const AuthContext = React.createContext({
 
 function AuthContextProvider(props) {
     //MAIN COOKIE STORE
-    const [user, setUser] = React.useState({id:""});
+    const [user, setUser] = React.useState({id: null});
     const [PCMday ,setPCMDay] = React.useState("");
     const [loggedIn, setLoggedIn] = React.useState(false);
     const [terms, setTerms] = React.useState(false);
@@ -54,6 +55,7 @@ function AuthContextProvider(props) {
     const [modal, setModal] = React.useState({open: false, title: '', message: '', function: ()=> {}});
     const [events, setEvents] = React.useState({});
     const [videos, setVideos] =  React.useState([]);
+    const [live, setLive] = React.useState(false);
     //LOG IN PERSIST
 
 
@@ -69,11 +71,14 @@ function AuthContextProvider(props) {
             setUser(data)
             setUser({...data, ProfilePicture : data.ProfilePicture.url})
             getPCMDay(data.startJourney)
+            setLoggedIn(true);
+            setLive(true);
           }catch(error){
   
             setCookie('isLoggedIn','false',0);
             setCookie('token','',0);  
             window.location.replace("/")
+            setLoggedIn(true);
           }
          
       }
@@ -82,7 +87,7 @@ function AuthContextProvider(props) {
       if(getCookie('isLoggedIn') === "true" ){
         //console.log(getCookie('token'));
         persist(getCookie('token'));
-        setLoggedIn(true);
+        
        
         
       }
@@ -125,6 +130,7 @@ function AuthContextProvider(props) {
           axios.get(`${config.SERVER_URL}/events`).then(res => {
             setEvents(res.data)
             console.log('success LogIn', res.data);
+            setLive(true);
           }).catch(error=> {
             console.log(error)
           })
@@ -211,6 +217,8 @@ function AuthContextProvider(props) {
       //console.log(`${config.SERVER_URL}/auth/local/register`)
 
       // let jwt = ""
+
+
       if(form.FirstName.length <= 2 || form.LastName.length <= 2){
           return handleToaster("Your Name is Invalid","warning");
       }
@@ -263,7 +271,7 @@ function AuthContextProvider(props) {
               ranking: form.Ranking,
               username: form.Username,
               active3Uplines: `${form.upline1}, ${form.upline2}, ${form.upline3}`,
-              experiencedNetBuilder: (form.Trained === 'true' ? true : false),
+              experiencedNetBuilder: (form.Trained === 'true' ? true : false ),
               networkBuilderEvents: form.Programs ,
               users_permissions_user: response.data.user
           }, {
@@ -319,7 +327,7 @@ function AuthContextProvider(props) {
           }).catch(error => {
           // Handle error.
           setLoad(false);
-          handleToaster("Sorry. We are having a Problem Authentication You!","warning");
+          setSuccess(true);
           
           });
 
@@ -333,7 +341,7 @@ function AuthContextProvider(props) {
           //REGISTRATION FAILURE RESPONSE
           console.log(error);
           setLoad(false);
-          handleToaster("There is a problem with your Application!","warning");
+          setModal({open: true, title: 'Sorry, that account is already taken, You may send your concern to us by clicking proceed.', function: ()=>{window.location.replace("/contact")}})
           
       });
 
@@ -375,6 +383,7 @@ function AuthContextProvider(props) {
         setUser: setUser,
         videos: videos,
         PCMday: PCMday,
+        live: live,
     }}
     
   >

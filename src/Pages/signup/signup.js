@@ -116,7 +116,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Signup () {
     const classes = useStyles();
     const ctx = useContext(AuthContext);
-    const [form, setForm] = React.useState({FirstName: '', LastName: '',Email: '', Spouse: '',Password: '',PasswordConfirm: '', Username: '',Purpose: '', BirthDate: new_date1 , Contact: "", Ranking: null, ProfilePicture: '', ProfilePicturePreview: '',PersonalSignature: null , Trained: 'true',Programs: '', country: "",  address: '' , city:'', zip: '' , proof:'', dateproof: new_date2, upline1: '', upline2: '' , upline3:'', Sponsor: '',PCMupline: '', Start: new_date3 , End: new_date4 , PersonalSignPreview: null, PCMSignPreview: null,
+    const [form, setForm] = React.useState({FirstName: '', LastName: '',Email: '', Spouse: '',Password: '',PasswordConfirm: '', Username: '',Purpose: '', BirthDate: new_date1 , Contact: "", Ranking: null, ProfilePicture: '', ProfilePicturePreview: '',PersonalSignature: null , Trained: 'false',Programs: '', country: "",  address: '' , city:'', zip: '' , proof:'', dateproof: new_date2, upline1: '', upline2: '' , upline3:'', Sponsor: '',PCMupline: '', Start: new_date3 , End: new_date4 , PersonalSignPreview: null, PCMSignPreview: null,
     });
     
     const [showPassword, setShowPassword] = React.useState(false);
@@ -483,6 +483,39 @@ export default function Signup () {
                             />
                     </FormControl>
                 </div>
+
+                <div className={classes.formItem} style={{textAlign:'center'}}>
+                    <FormControl component="fieldset">
+                        <FormLabel style={{marginBottom: "20px"}} component="legend">Have you attended any training program in Network Building?</FormLabel>
+                            <RadioGroup aria-label="gender" name="customized-radios"
+                            value={form.Trained} 
+                            onChange={(e)=> setForm({...form, Trained: e.target.value})}>
+                                <FormControlLabel value='true' control={<Radio color='primary'/>} label="Yes" />
+                                <FormControlLabel value='false' control={<Radio color='primary' />} label="No" />
+                        </RadioGroup>
+                    </FormControl>
+                </div>
+                
+
+                {form.Trained === 'true' && <div className={classes.formItem}>
+                    <FormControl className={clsx(classes.margin, classes.textField)} variant="filled" fullWidth>
+                        <InputLabel >List The Training Programs: </InputLabel>
+                            <OutlinedInput
+                                onBlur={(e)=>setForm({...form, Programs : e.target.value})}
+                                multiline
+                                rows={4}
+                                type='text'
+                                fullWidth
+                                endAdornment={
+                                <InputAdornment position="end">
+                                    <IconButton edge="end">
+                                        <HelpIcon style={{fontSize:'25px'}}/>
+                                    </IconButton>
+                                </InputAdornment>
+                                }
+                            />
+                    </FormControl>
+                </div>}
                 
         {/* PHBWORX Information **********************************************************/}
 
@@ -797,38 +830,7 @@ export default function Signup () {
                     </FormControl>
                 </div>
 
-                <div className={classes.formItem} style={{textAlign:'center'}}>
-                    <FormControl component="fieldset">
-                        <FormLabel style={{marginBottom: "20px"}} component="legend">Have you attended any training program in Network Building?</FormLabel>
-                            <RadioGroup aria-label="gender" name="customized-radios"
-                            value={form.Trained} 
-                            onChange={(e)=> setForm({...form, Trained: e.target.value})}>
-                                <FormControlLabel value='true' control={<Radio color='primary'/>} label="Yes" />
-                                <FormControlLabel value='false' control={<Radio color='primary' />} label="No" />
-                        </RadioGroup>
-                    </FormControl>
-                </div>
                 
-
-                {form.Trained === 'true' && <div className={classes.formItem}>
-                    <FormControl className={clsx(classes.margin, classes.textField)} variant="filled" fullWidth>
-                        <InputLabel >List The Training Programs: </InputLabel>
-                            <OutlinedInput
-                                onBlur={(e)=>setForm({...form, Programs : e.target.value})}
-                                multiline
-                                rows={4}
-                                type='text'
-                                fullWidth
-                                endAdornment={
-                                <InputAdornment position="end">
-                                    <IconButton edge="end">
-                                        <HelpIcon style={{fontSize:'25px'}}/>
-                                    </IconButton>
-                                </InputAdornment>
-                                }
-                            />
-                    </FormControl>
-                </div>}
 
                 <div className={classes.formItem}>
                     <KeyboardDatePicker
@@ -846,9 +848,9 @@ export default function Signup () {
                     </IconButton>
                     
                 </div> 
-                <div className={classes.formItem} style={{textAlign:'center'}}>
-                <Typography variant="h5" >End of your 90 Days PCM Journey</Typography>
-                    <Typography variant="h4" >{`${form.End.format('MMMM DD, YYYY')}`}</Typography>
+                <div className={classes.formItem} >
+                <Typography  variant="body2" >End of your 90 Days PCM Journey</Typography>
+                    <Typography variant="body1" >{`${form.End.format('MMMM DD, YYYY')}`}</Typography>
                 </div> 
 
 

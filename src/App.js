@@ -36,22 +36,22 @@ import Watch from './Pages/dashboard/watch/watch';
 import {AuthContext} from './Provider/context'
 import Construction from "./Pages/construction/construction";
 
+
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 function App() {
-
-  
   const ctx = React.useContext(AuthContext);
-
+  React.useEffect(() => {
+    
+  }, [ctx.live])
 
  
-
-  return (
+  if(ctx.live){
+    return (
   
       <ThemeProvider theme={theme}>
-
         <Dialog
         open={ctx.modal.open}
         onClose={()=> {ctx.setModal({open: false})}} 
@@ -121,10 +121,6 @@ function App() {
                 <Route  path={`/dashboard/watch`} exact>
                     <Watch/>
                 </Route>
-          
-                <Route  path={`/dashboard/watch/:id`} >
-                    <WatchVideo/>
-                </Route>
                
                 
                 <Route>
@@ -135,7 +131,18 @@ function App() {
         </Router>   
       </ThemeProvider>
     
-  );
+  )
+  }else{
+    return (
+      <div style={{width : '100%', height: '100vh', display: 'flex',textAlign: 'center' ,flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+      <h1>"He that can have patience can have what he will."</h1>
+      <CircularProgress style={{color: '#EC113E' , fontSize: '30px'}} />
+
+    </div>
+      
+    )
+  }
+  
 }
 
 export default App;
