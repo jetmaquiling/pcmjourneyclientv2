@@ -60,18 +60,13 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
+
 
 export default function PCMJourneyNav() {
     const classes = useStyles();
-    const myRef = React.useRef(null)
-
-    React.useEffect(() => {
-        scrollToRef(myRef)
-    }, [])
     
   return (
-    <Grid ref={myRef}  container className={classes.root}>
+    <Grid   container className={classes.root}>
         
 
         <Grid item md={6} className={classes.rootItem}>
