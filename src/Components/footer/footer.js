@@ -6,7 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
-
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     box:{
@@ -77,6 +77,12 @@ export default function Footer () {
                 <Typography variant="caption">
                     Contact phbworxtechnical@gmail.com  
                 </Typography>
+                <Link to='/backlinks' >
+                    <Typography variant="caption">
+                        Resources Used Are Found Here
+                    </Typography>
+                </Link>
+                
             </div>
             
             

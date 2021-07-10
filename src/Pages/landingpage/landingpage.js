@@ -308,8 +308,7 @@ export default function LandingPage () {
                     <br/>
                     <br/>
                     <br/>
-                    <Typography variant="h6" >-Immanuel Abella-</Typography>
-                    <Typography variant="h6" >Chief Business Development Officer </Typography>
+                    <Typography variant="h6" >-Chief Business Development Officer-</Typography>
                 </div> 
                 <div className={classes.video} >
                      <iframe className={classes.videoFrame}  src="https://www.youtube.com/embed/RxOz7TI1b7s" title="YouTube video player" frameBorder="0" allowFullScreen={true}></iframe>

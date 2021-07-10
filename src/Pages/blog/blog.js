@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
         },
         [theme.breakpoints.down('xs')]: {
             padding: '10px 5px 0px 5px',
-            alignItems: 'end'
+            
         },
     },
     imageBox:{
@@ -59,9 +59,9 @@ const useStyles = makeStyles((theme) => ({
         // [theme.breakpoints.down('sm')]: {
         //     width: '50%',
         // },
-        // [theme.breakpoints.down('xs')]: {
-        //     width: '400%',
-        // },
+        [theme.breakpoints.down('xs')]: {
+            alignSelf: 'end'
+        },
     },
     image:{
         padding: '10px',
@@ -160,7 +160,7 @@ export default function Blog() {
 
         <div  item md={12} style={{padding: '100px 0px 30px 0px' , width: '100%' ,  display:'flex' , justifyContent: 'center', textAlign: 'center'}}>
 
-        <Typography variant='h2' color='primary' className={classes.heading} ><b>" Every Journey Has A Story "</b></Typography>
+        <Typography variant='h2' color='primary' className={classes.heading} ><b>Every Journey Has A Story</b></Typography>
         </div>
 
         {blogs.map((blog, index)=>{

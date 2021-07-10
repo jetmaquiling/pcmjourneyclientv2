@@ -37,6 +37,7 @@ import {AuthContext} from './Provider/context'
 import Construction from "./Pages/construction/construction";
 import Blog from './Pages/blog/blog';
 import BlogPage from "./Pages/blog/page/blogpage";
+import Backlinks from "./Pages/backlinks/backlinks";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -98,6 +99,10 @@ function App() {
 
                 <Route path="/signup">
                   <SignUp />
+                </Route>
+
+                <Route path="/backlinks">
+                  <Backlinks />
                 </Route>
 
                
