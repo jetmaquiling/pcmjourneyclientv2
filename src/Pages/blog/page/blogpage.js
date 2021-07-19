@@ -8,12 +8,10 @@ import axios from 'axios';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
-import MetaTags from 'react-meta-tags';
 
 import Button from '@material-ui/core/Button';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import ShareIcon from '@material-ui/icons/Share';
-import { DriveEtaSharp } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -202,7 +200,10 @@ export default function BlogPage() {
                 
                 <div className={classes.content} dangerouslySetInnerHTML={{__html: `${blog.content}`}} />
                 
-                
+                <div  item md={12} style={{padding: '100px 0px 30px 0px' , width: '100%' ,  display:'flex' , justifyContent: 'center', textAlign: 'center'}}>
+
+                <Typography variant="h6" >Help Inspire the Community, Tell Us Your Story. </Typography>
+                </div>
                 
             </div>
         );

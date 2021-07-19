@@ -51,7 +51,7 @@ export default function Watch() {
 
     useEffect(() => {
         async function getVideo() { 
-            const {data} = await axios.get(`${config.SERVER_URL}/watches`, {
+            const {data} = await axios.get(`${config.SERVER_URL}/watches?_sort=date:ASC`, {
               headers: { Authorization: `Bearer ${ctx.getCookie('token')}` }
               });
               setVideo(data)
@@ -68,14 +68,7 @@ export default function Watch() {
             {video.map((vid, index)=>{
                 return (
                     <Card key={index} className={classes.cardroot}>
-                                <CardActionArea>
-                                    <CardMedia
-                                    component="img"
-                                    alt={vid.title}
-                                    height="250"
-                                    image={vid.clipboard.url}
-                                    title={vid.title}
-                                    />
+                                
                                     <CardContent>
                                         <Typography  variant="h5" component="h2">
                                             {vid.title} 
@@ -87,7 +80,7 @@ export default function Watch() {
                                            {vid.description}
                                         </Typography>
                                     </CardContent>
-                                </CardActionArea>
+                                
                                 <CardActions>
                                             <Button size="large" color="primary" >
                                                  <Link href={vid.url}>

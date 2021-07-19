@@ -183,12 +183,12 @@ export default function Blog() {
                 </Link>
 
             )
-            
-
-
 
         })}
-        
+        <div  item md={12} style={{padding: '100px 0px 30px 0px' , width: '100%' ,  display:'flex' , justifyContent: 'center', textAlign: 'center'}}>
+
+        <Typography variant="h6" >Help Inspire the Community, Tell Us Your Story. </Typography>
+        </div>
 
     </div>
   );

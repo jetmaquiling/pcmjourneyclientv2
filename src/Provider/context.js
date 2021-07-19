@@ -31,6 +31,7 @@ export const AuthContext = React.createContext({
     handleClose: (event, reason) => {},
     loggedIn: null,
     getCookie: (cname) => {},
+    setCookie: (cname,value,time) => {},
     user: {},
     setUser: () => {},
     getEvents: () => {},
@@ -69,16 +70,22 @@ function AuthContextProvider(props) {
               });
             setCookie('isLoggedIn','true',7);    
             setUser(data)
-            setUser({...data, ProfilePicture : data.ProfilePicture.url})
+            try{
+              setUser({...data, ProfilePicture : data.ProfilePicture.url})
+            }catch(error){
+              console.log('No Profile Picture')
+            }
+            
             getPCMDay(data.startJourney)
             setLoggedIn(true);
             setLive(true);
           }catch(error){
-  
-            setCookie('isLoggedIn','false',0);
-            setCookie('token','',0);  
-            window.location.replace("/")
-            setLoggedIn(true);
+            console.log('Context ERROR')
+            console.log(error)
+            // setCookie('isLoggedIn','false',0);
+            // setCookie('token','',0);  
+            // window.location.replace("/")
+            // setLoggedIn(true);
           }
          
       }
@@ -378,6 +385,7 @@ function AuthContextProvider(props) {
         modal: modal,
         setModal:  setModal,
         getCookie: getCookie,
+        setCookie: setCookie,
         getEvents: getEvents,
         events: events,
         setUser: setUser,

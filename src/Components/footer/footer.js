@@ -74,14 +74,22 @@ export default function Footer () {
                     for PCM Journey Online Class
                     
                 </Typography>
-                <Typography variant="caption">
-                    Contact phbworxtechnical@gmail.com  
-                </Typography>
                 <Link to='/backlinks' >
                     <Typography variant="caption">
                         Resources Used Are Found Here
                     </Typography>
                 </Link>
+                <Link to='/termsandpolicies' >
+                    <Typography variant="caption">
+                        Terms And Policies
+                    </Typography>
+                </Link> 
+                <br/>
+
+                <Typography variant="caption">
+                    Contact phbworxtechnical@gmail.com for more Info
+                </Typography>
+                
                 
             </div>
             

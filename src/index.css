@@ -1,6 +1,8 @@
 body {
   margin: 0;
    font-family: 'Segoe UI';
+   src: url("./Theme/AnyConv.com__SEGOEUI.woff2") format("woff2");
+   font-display: swap;
 }
 
 a, a:hover, a:visited, a:active {

@@ -16,10 +16,11 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import {AuthContext} from '../../Provider/context';
 
-
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
 
 export default function Login () {
     const classes = useStyles();
+    const myRef = React.useRef(null)
     const [available, setAvailable] = React.useState(false);
     const [showPassword, setShowPassword] = React.useState(false);
     const [form, setForm] = React.useState({email: '', password: ''});
@@ -31,14 +32,16 @@ export default function Login () {
         
       };
     
-    
+      React.useEffect(() => {
+        scrollToRef(myRef)
+    }, [])
 
     
     if(ctx.getCookie('isLoggedIn')){
         window.location.replace("/dashboard")
     }else{
         return (
-            <div className={classes.root}>
+            <div className={classes.root} ref={myRef}>
 
                 
 
@@ -58,6 +61,7 @@ export default function Login () {
                         <FormControl className={clsx(classes.margin, classes.textField)} variant="filled" fullWidth>
                             <InputLabel htmlFor="filled-adornment-password" >Username or Email</InputLabel>
                                 <OutlinedInput
+                                    multiline
                                     onChange={(e)=>setForm({...form, email: e.target.value})}
                                     value={form.email}
                                     id="filled-adornment-email"
@@ -66,8 +70,7 @@ export default function Login () {
                                     endAdornment={
                                     <InputAdornment position="end">
                                         
-                                        <ForEmailUsername 
-                                        available={available} setAvailable={setAvailable} data={"email"}/>
+                                        <ForEmailUsername />
                                     </InputAdornment>
                                     }
                                 />
@@ -92,8 +95,7 @@ export default function Login () {
                                         >
                                             {showPassword ? <Visibility /> : <VisibilityOff />}
                                         </IconButton>
-                                        <ForEmailUsername 
-                                        available={available} setAvailable={setAvailable} data={"password"}/>
+                                        <ForEmailUsername />
                                     </InputAdornment>
                                     }
                                 />

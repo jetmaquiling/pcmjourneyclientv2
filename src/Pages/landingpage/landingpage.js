@@ -9,6 +9,8 @@ import PCMGold from '../../Resources/Images/PCMLOGO.png';
 import Contact from '../../Pages/contact/contact';
 import MetaTags from 'react-meta-tags';
 import PCMSnippet from './PCMSnippet.png';
+import ClassLink from '../pcmjourney/pcmjourney';
+
 // xs: 0,
 // sm: 600,
 // md: 1040,
@@ -314,6 +316,7 @@ export default function LandingPage () {
                      <iframe className={classes.videoFrame}  src="https://www.youtube.com/embed/RxOz7TI1b7s" title="YouTube video player" frameBorder="0" allowFullScreen={true}></iframe>
                 </div>     
             </div>   
+            <ClassLink/>
             <div className={classes.h5} >
                     <img src={PCMGold} className={classes.logoImage} />
                     

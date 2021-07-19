@@ -89,23 +89,7 @@ export default function PCMJourneyNav() {
             
         </Grid>
         
-        <Grid item md={6} className={classes.rootItem}>
-            <div className={classes.noteBox}  >
-                <Typography variant="body1" >100 Prospect List:</Typography>
-                <Typography variant="body2" >Having a list of prospects is important in lead generation and translates to profits in businesses in the long-term. Think about it- you might be the most skilled salesperson at your company, but if you’re reaching out to the wrong people, your sales skills will have no impact on their desire to purchase your product. Your success is dependent on the quality of your sales prospect lists. </Typography>
-            </div>
-            <Link to="/dashboard/prospectlist">
-                <Button variant="contained" className={classes.button}  >
-                    <div className={classes.buttonitembox}>
-                        <div style={{display: 'flex',alignItems: 'center',}}>
-                        <FormatListNumberedIcon className={classes.iconButton} />
-                        <Typography className={classes.textButton} variant="body1" >100 Prospect List</Typography>
-                        </div>
-                        <ArrowForwardIosIcon className={classes.arrowButton} />
-                    </div>
-                </Button>
-            </Link>
-        </Grid>
+        
         
         <Grid item md={6} className={classes.rootItem}>
             <div className={classes.noteBox}  >
@@ -143,6 +127,24 @@ export default function PCMJourneyNav() {
                 </Button>
             </Link>
         </Grid>
+
+        {/* <Grid item md={6} className={classes.rootItem}>
+            <div className={classes.noteBox}  >
+                <Typography variant="body1" >100 Prospect List:</Typography>
+                <Typography variant="body2" >Having a list of prospects is important in lead generation and translates to profits in businesses in the long-term. Think about it- you might be the most skilled salesperson at your company, but if you’re reaching out to the wrong people, your sales skills will have no impact on their desire to purchase your product. Your success is dependent on the quality of your sales prospect lists. </Typography>
+            </div>
+            <Link to="/dashboard/prospectlist">
+                <Button variant="contained" className={classes.button}  >
+                    <div className={classes.buttonitembox}>
+                        <div style={{display: 'flex',alignItems: 'center',}}>
+                        <FormatListNumberedIcon className={classes.iconButton} />
+                        <Typography className={classes.textButton} variant="body1" >100 Prospect List</Typography>
+                        </div>
+                        <ArrowForwardIosIcon className={classes.arrowButton} />
+                    </div>
+                </Button>
+            </Link>
+        </Grid> */}
 
         {/* <Grid item md={6} className={classes.rootItem}>
             <div className={classes.noteBox}  >
@@ -236,25 +238,28 @@ export default function PCMJourneyNav() {
         </Grid>
 
  */}
-        <Link to="/contact">
+
+        
             <Grid item md={6} className={classes.rootItem}>
+            
                 <div className={classes.noteBox}  >
                     <Typography variant="body1" >Contact Us:</Typography>
                     <Typography variant="body2" > Are you a user with questions about PCM Journey? We’re ready to help.The more we help, the happier we feel. Volunteering increases self-confidence. You are doing good for us and the community, which provides a natural sense of accomplishment. Your role as a PCM Journey participant also give us a sense of pride and honor.</Typography>
                 </div>
                 
-                <Button variant="contained" className={classes.button}  >
-                    <div className={classes.buttonitembox}>
-                        <div style={{display: 'flex',alignItems: 'center',}}>
-                        <ContactMailIcon className={classes.iconButton} />
-                        <Typography className={classes.textButton} variant="body1" >Contact Us</Typography>
+                <Link to="/contact">
+                    <Button variant="contained" className={classes.button}  >
+                        <div className={classes.buttonitembox}>
+                            <div style={{display: 'flex',alignItems: 'center',}}>
+                            <ContactMailIcon className={classes.iconButton} />
+                            <Typography className={classes.textButton} variant="body1" >Contact Us</Typography>
+                            </div>
+                            <ArrowForwardIosIcon className={classes.arrowButton} />
                         </div>
-                        <ArrowForwardIosIcon className={classes.arrowButton} />
-                    </div>
-                </Button>
-        
+                    </Button>
+                </Link>
             </Grid>
-        </Link>
+        
 
 
 

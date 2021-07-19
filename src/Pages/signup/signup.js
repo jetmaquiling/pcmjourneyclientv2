@@ -38,6 +38,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { Prompt } from 'react-router'
 import config from '../../Config/config.json';
 import {AuthContext} from '../../Provider/context';
+import {PoliciesComponent,SuccessModalComponent} from '../../Components/dialog/dialog';
  
 
 
@@ -112,9 +113,12 @@ const useStyles = makeStyles((theme) => ({
   let new_date2 = moment();
   let new_date3 =moment();
   let new_date4 =moment();
+  const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
+
 
 export default function Signup () {
     const classes = useStyles();
+    const myRef = React.useRef(null)
     const ctx = useContext(AuthContext);
     const [form, setForm] = React.useState({FirstName: '', LastName: '',Email: '', Spouse: '',Password: '',PasswordConfirm: '', Username: '',Purpose: '', BirthDate: new_date1 , Contact: "", Ranking: null, ProfilePicture: '', ProfilePicturePreview: '',PersonalSignature: null , Trained: 'false',Programs: '', country: "",  address: '' , city:'', zip: '' , proof:'', dateproof: new_date2, upline1: '', upline2: '' , upline3:'', Sponsor: '',PCMupline: '', Start: new_date3 , End: new_date4 , PersonalSignPreview: null, PCMSignPreview: null,
     });
@@ -126,6 +130,10 @@ export default function Signup () {
         let startDate = moment(form.Start);
         setForm({...form, End: startDate.add('90','days')})
       },[form.Start]);
+
+    React.useEffect(() => {
+        scrollToRef(myRef)
+    }, [])
 
    
     const handleClickShowPassword = () => {
@@ -154,84 +162,19 @@ export default function Signup () {
     
 
     return (
-        <div className={classes.root}>
+        <div className={classes.root} ref={myRef}>
             <Prompt
                 // when={shouldBlockNavigation}
                 message='You have unsaved changes, are you sure you want to leave?'
                 />
-            <Dialog
-                style={{zIndex: 9999}}
-                open={ctx.success}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-            >
-                <DialogTitle id="alert-dialog-title">{}</DialogTitle>
-                <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                    PHBWORX INTERNATIONAL is processing your application.
-                </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                <Button onClick={()=>window.location.replace("/")} color="primary" autoFocus>
-                    Continue
-                </Button>
-                </DialogActions>
-            </Dialog>
+            
+            <SuccessModalComponent/>
 
             <Backdrop style={{zIndex: 9998}} className={classes.backdrop} open={ctx.load} >
                 <CircularProgress color="inherit" />
             </Backdrop>
 
-            <Dialog
-                open={ctx.terms}
-                aria-labelledby="scroll-dialog-title"
-                aria-describedby="scroll-dialog-description"
-            >
-                <DialogTitle id="scroll-dialog-title">Terms and Policies</DialogTitle>
-                <DialogContent >
-                <DialogContentText
-                    id="scroll-dialog-description"
-                    tabIndex={-1}
-                    style={{fontSize: '15px'}}
-                >
-                   Welcome to the PCM Journey!
-                    <br/>
-                    <br/>
-                    PCM Journey builds technologies and services that enable people to connect with each other, build communities, and grow businesses. These Terms govern your use of PCM Journey, eBuddy.ph, and the other products, features, apps, services, technologies, and software we offer (the PHBWorx Products or Products), except where we expressly state that separate terms (and not these) apply. These Products are provided to you by PHBWorx International, Inc.
-                    <br/>
-                    <br/>
-                    We don’t charge you to use the PCM Journey App or the other products and services covered by these Terms.
-                     By using our Products, you agree that we can show you products that we think will be relevant to you and your interests. We use your personal data to help determine which task to show you.
-                    <br/>
-                    <br/>
-                    We don’t sell your personal data to anyone, and we don’t share information that directly identifies you (such as your name, email address or other contact information) unless you give us specific permission. Instead, advertisers can tell us things like the kind of audience they want to see their ads, and we show those ads to people who may be interested. We provide advertisers with reports about the performance of their ads that help them understand how people are interacting with their content. See Section 2 below to learn more. 
-                    <br/>
-                    <br/>
-                    Our mission is to give people the power to build community and bring the people closer together. To help advance this mission, we provide the Products and services described below to you:
-                    <br/>
-                    1 Provide a personalized experience for you.
-                    <br/>
-                    2 Connect you with people and organizations you care about.
-                    <br/>
-                    3 Empower you to express yourself and communicate about what matters to you.
-                    <br/>
-                    4 Help you discover content, products, and services that may interest you.
-                    <br/>
-                    5 Combat harmful conduct and protect and support our community.
-
-                </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                <Button onClick={()=>ctx.setTerms(false)} color="primary">
-                    Cancel
-                </Button>
-                <Button onClick={()=> {
-                    ctx.setTerms(false);
-                    ctx.setChecked(true)}} color="primary">
-                    Agree
-                </Button>
-                </DialogActions>
-            </Dialog>
+            <PoliciesComponent/>
 
             <div className={classes.backBox} >
                 <Link to='/'>
@@ -239,7 +182,7 @@ export default function Signup () {
                 </Link>
             </div>
 
-            <div className={classes.h2Box} >
+            <div className={classes.h2Box}   >
                 <Typography variant="h2" className={classes.h2}>Sign up</Typography>
             </div>
 

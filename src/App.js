@@ -38,7 +38,8 @@ import Construction from "./Pages/construction/construction";
 import Blog from './Pages/blog/blog';
 import BlogPage from "./Pages/blog/page/blogpage";
 import Backlinks from "./Pages/backlinks/backlinks";
-
+import TermsAndPolicies from "./Pages/termsandpolicies/termsandpolicies";
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
@@ -105,6 +106,9 @@ function App() {
                   <Backlinks />
                 </Route>
 
+                <Route path="/termsandpolicies">
+                  <TermsAndPolicies />
+                </Route>
                
                 <Route path="/login">
                   <LogIn />
@@ -138,10 +142,12 @@ function App() {
                     <ClassLink/>
                 </Route>
                 
-                <Route  path={`/dashboard/watch`} exact>
+                <Route  path='/dashboard/watch' exact>
                     <Watch/>
                 </Route>
-               
+                <Route  path='/dashboard/watch/:id' >
+                    <WatchVideo/>
+                </Route>
                 
                 <Route>
                   <LandingPage />
