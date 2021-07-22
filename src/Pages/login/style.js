@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 export default makeStyles((theme) => ({
     root: {
         width: '480px',
-        margin: '100px auto 50px auto ',
+        margin: '20px auto 50px auto ',
         [theme.breakpoints.down('xs')]: {
             width: '90%',
             margin: '70px auto 50px auto ',

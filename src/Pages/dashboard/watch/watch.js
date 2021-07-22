@@ -20,7 +20,7 @@ import Collapse from '@material-ui/core/Collapse';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-    margin: '80px 0px',
+    margin: '20px 0px',
       width: '100%',
       display:'flex',
       flexDirection: 'column',

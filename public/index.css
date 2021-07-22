@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'Segoe UI'; /* Define the custom font name */
+    src: url("./AnyConv.com__SEGOEUI.woff2") format("woff2"),
+          url('./AnyConv.com__SEGOEUI.woff') format('woff'); 
+    font-display: swap; /* Define how the browser behaves during download */
+  }
+  

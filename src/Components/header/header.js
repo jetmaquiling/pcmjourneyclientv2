@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
   root: {
     flexGrow: 1,
+    height: '10vh'
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -209,7 +210,18 @@ export default function Header (){
               <div className={classes.profileName} >
               <Typography variant="body1" className={classes.profileText}  >{ctx.user.firstName} {ctx.user.lastName}</Typography>
               <Typography variant="h3" className={classes.divider} >|</Typography>
-              <Typography variant="h6" className={classes.profileTitle}   >PCM JOURNEY DAY {ctx.PCMday}</Typography>
+              {
+              (ctx.PCMday < 0) 
+              ? 
+             (
+              <Typography variant="h6" className={classes.profileTitle}>Starting in {Math.abs(ctx.PCMday)} Days</Typography>) 
+              : 
+              (
+              <Typography variant="h6" className={classes.profileTitle}>PCM Journey Day {ctx.PCMday}</Typography> 
+              )
+
+               }
+             
               </div>
              
             </div>

@@ -39,7 +39,7 @@ function Alert(props) {
 
 const useStyles = makeStyles((theme) => ({
     main:{
-        margin: '60px 0px 0px 0px',
+        margin: '0px 0px 0px 0px',
         height: '200vh',
         display: 'flex',
         textAlign: 'center',
@@ -96,6 +96,7 @@ export default function Footer () {
     const classes = useStyles();
     const ctx = useContext(AuthContext);
     const [visible, setVisible] = useState(null);
+    const [success, setSuccess] = useState(false);
     const [form, setForm] = useState({Email: '', Name: '', Contact: '', Assistance: '', Subject: '', Message: '', Attachment: '', AttachmentPreview: ''});
     const location = useLocation()
 
@@ -147,9 +148,10 @@ export default function Footer () {
                 formData.append('field', 'attachment');
                 axios.post(`${config.SERVER_URL}/upload`, formData).then(request => {
                     console.log(request.ok)
-                    ctx.setSuccess(true);
+                    setSuccess(true);
                 }).catch(error => {
                     console.log(error)
+                    ctx.handleToaster("Sorry. We are having a Problem With Your Picture!","warning");
                     ctx.setLoad(false);
                 })
                 
@@ -185,7 +187,7 @@ export default function Footer () {
             </Snackbar>
             <Dialog
                 style={{zIndex: 9999}}
-                open={ctx.success}
+                open={success}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >

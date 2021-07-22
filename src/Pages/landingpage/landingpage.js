@@ -10,6 +10,7 @@ import Contact from '../../Pages/contact/contact';
 import MetaTags from 'react-meta-tags';
 import PCMSnippet from './PCMSnippet.png';
 import ClassLink from '../pcmjourney/pcmjourney';
+import Testimony from '../../Components/testimony/testimony';
 
 // xs: 0,
 // sm: 600,
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
         overflow: 'hidden'
     },
     firstSection:{
-        margin: '150px 00px 200px 00px',
+        margin: '80px 00px 200px 00px',
         [theme.breakpoints.down('xs')]: {
             margin: '120px 00px 50px 00px',
             
@@ -276,11 +277,11 @@ export default function LandingPage () {
     const classes = useStyles();
 
     return (
-        <div className={classes.root} >
+        <div className={classes.root}  >
             <MetaTags>
                 <meta property="og:url" content="https://jetzrecords.com/" />
-                <meta property="og:type"               content="article" />
-                <meta property="og:title"              content="PCM Journey" />
+                <meta property="og:type"               content="website" />
+                <meta property="og:title"              content="PCM Journey - The Goal : New Mindset & Confident Spirit" />
                 <meta property="og:description"        content="The PCM Journey is for those who want to go through a training that will give them a significant result in the end."/>
                 <meta property="og:image"    content={PCMSnippet} />
             </MetaTags>
@@ -293,12 +294,12 @@ export default function LandingPage () {
                 <div className={classes.buttonBox} >
                     <Link to='/signup'>
                         <Button variant="contained" color="primary" className={classes.appButton} >
-                            Sign Up
+                             <Typography variant="body1">SIGN UP</Typography>
                         </Button>
                     </Link>
                     <Link to='/login'>
                         <Button variant="outlined" color="primary" className={classes.appButton} >
-                            LOG In
+                            <Typography variant="body1">LOG IN</Typography>
                         </Button>
                     </Link>
                 </div>
@@ -384,7 +385,7 @@ export default function LandingPage () {
                     </div>
                 </div>
             </div>
-
+            <Testimony/>
             <Contact />
         </div>
         

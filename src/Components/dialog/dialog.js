@@ -157,18 +157,18 @@ export function SuccessModalComponent() {
   return (
             <Dialog
             style={{zIndex: 9999}}
-            open={ctx.success}
+            open={ctx.success.status}
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
         >
             <DialogTitle id="alert-dialog-title">{}</DialogTitle>
             <DialogContent>
             <DialogContentText id="alert-dialog-description">
-                PHBWORX INTERNATIONAL is processing your application.
+                Welcome To The PCM Online Class!
             </DialogContentText>
             </DialogContent>
             <DialogActions>
-            <Button onClick={()=>window.location.replace("/")} color="primary" autoFocus>
+            <Button onClick={ctx.logIn(ctx.success.email, ctx.success.password)} color="primary" autoFocus>
                 Continue
             </Button>
             </DialogActions>

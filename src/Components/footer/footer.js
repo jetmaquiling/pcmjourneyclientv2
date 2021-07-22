@@ -87,7 +87,7 @@ export default function Footer () {
                 <br/>
 
                 <Typography variant="caption">
-                    Contact phbworxtechnical@gmail.com for more Info
+                    phbworxtechnical@gmail.com
                 </Typography>
                 
                 

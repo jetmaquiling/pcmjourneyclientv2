@@ -20,7 +20,7 @@ export default function Dashboard () {
     }else{
         return (
             <div  ref={myRef} >
-                <div  item md={12} style={{padding: '100px 0px 0px 0px' , width: '100%' ,  display:'flex' , justifyContent: 'center', textAlign: 'center'}}>
+                <div  item md={12} style={{padding: '50px 0px 0px 0px' , width: '100%' ,  display:'flex' , justifyContent: 'center', textAlign: 'center'}}>
 
                     <Typography variant='h3' color='primary'  ><b>DASHBOARD </b></Typography>
                 </div>

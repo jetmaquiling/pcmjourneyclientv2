@@ -185,7 +185,7 @@ export default function ClassLink() {
     
       
   return (
-    <div className={classes.root}>
+    <div className={classes.root} >
             <Typography variant='h5' className={classes.title} >PCM JOURNEY ONLINE CLASS IS STARTING IN: </Typography>
             <div className={classes.dateBox}>
                 <div className={classes.dateItem}> 

@@ -7,6 +7,8 @@ import YouTubeIcon from '@material-ui/icons/YouTube';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
+
 
 const useStyles = makeStyles((theme) => ({
     box:{
@@ -25,10 +27,13 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function Backlinks() {
+    const myRef = React.useRef(null)
     const classes = useStyles();
-   
+    React.useEffect(() => {
+        scrollToRef(myRef)
+    }, [])
     return (
-        <div className={classes.box} >
+        <div className={classes.box} ref={myRef}>
             <Typography variant="h4">
                 Resources
             </Typography>

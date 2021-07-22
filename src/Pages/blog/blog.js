@@ -17,9 +17,13 @@ import AlbumIcon from '@material-ui/icons/Album';
 import config from '../../Config/config.json';
 import axios from 'axios';
 
+
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
+
+
 const useStyles = makeStyles((theme) => ({
     root: {
-        padding: '30px 0px 0px 0px',
+        padding: '0px 0px 0px 0px',
         width: '100%',
         [theme.breakpoints.down('xs')]: {
             padding: '30px 0px 0px 0px',
@@ -145,6 +149,11 @@ export default function Blog() {
     const classes = useStyles();
     const myRef = React.useRef(null);
 
+
+    React.useEffect(() => {
+        scrollToRef(myRef)
+    }, [])
+
     const [blogs, setBlogs] = React.useState([]);
 
     React.useEffect(() => {
@@ -156,7 +165,7 @@ export default function Blog() {
     }, [])
   
   return (
-    <div  container className={classes.root}>
+    <div  container className={classes.root}  ref={myRef}>
 
         <div  item md={12} style={{padding: '100px 0px 30px 0px' , width: '100%' ,  display:'flex' , justifyContent: 'center', textAlign: 'center'}}>
 

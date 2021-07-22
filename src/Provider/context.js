@@ -15,7 +15,7 @@ export const AuthContext = React.createContext({
     logIn: (email,password)=> {},
     logOut: () => {},
     signUp: (form)=> {},
-    success: null,
+    success: {},
     setSuccess: ()=> {},
     checked: null,
     setChecked: ()=> {},
@@ -51,7 +51,7 @@ function AuthContextProvider(props) {
     const [terms, setTerms] = React.useState(false);
     const [load, setLoad] = React.useState(false);
     const [toaster, setToaster] = React.useState({open:false, message: '', status: ''});
-    const [success, setSuccess] = React.useState(false);
+    const [success, setSuccess] = React.useState({status:false,email: '', password: '',});
     const [checked, setChecked] = React.useState(false);
     const [modal, setModal] = React.useState({open: false, title: '', message: '', function: ()=> {}});
     const [events, setEvents] = React.useState({});
@@ -68,12 +68,12 @@ function AuthContextProvider(props) {
             const {data} = await axios.get(`${config.SERVER_URL}/users/${getCookie('id')}`, {
               headers: { Authorization: `Bearer ${jwt}` }
               });
-            setCookie('isLoggedIn','true',7);    
+            setCookie('isLoggedIn','true',30);    
             setUser(data)
             try{
               setUser({...data, ProfilePicture : data.ProfilePicture.url})
             }catch(error){
-              console.log('No Profile Picture')
+              // console.log('No Profile Picture')
             }
             
             getPCMDay(data.startJourney)
@@ -123,12 +123,16 @@ function AuthContextProvider(props) {
     // Get PCM DAY ALGO ***************************************************
       function getPCMDay(start) {
         const date = moment(start);
-        const then = moment(date.format("MM DD YYYY"), "MM DD YYYY");
         const now = moment();
-        const count = moment(now - then);
-        const day = count.format('D');
-        setPCMDay(day)
-        console.log(day)
+        const num = now.diff(date,"days");
+        setPCMDay(num)
+        // console.log(num)
+        
+        // if(num > 90 || num < 0){
+        //   setPCMDay(0)
+        // }else{
+        //   setPCMDay(num)
+        // }
     }
 
 
@@ -185,14 +189,14 @@ function AuthContextProvider(props) {
 
 
             const json = await data;
-            setCookie('token',json.jwt,7);
-            setCookie('id',json.user.id,7);
-            setCookie('isLoggedIn','true',7);
+            setCookie('token',json.jwt,30);
+            setCookie('id',json.user.id,30);
+            setCookie('isLoggedIn','true',30);
             // console.log('success LogIn', json);
             setUser(json.user)
             setLoggedIn(true)
             window.location.replace("/dashboard")
-            setLoad(false)
+            
             // console.log('success LogIn', json.user);
             
 
@@ -244,6 +248,12 @@ function AuthContextProvider(props) {
       if (form.Password.length <= 4  || form.Password !== form.PasswordConfirm){
           return handleToaster("Your Password in not the same","warning");
       }
+      if(form.Purpose.length <= 5){
+        return handleToaster("Tell us WHY you're joining?","warning");
+      }
+      if(form.PCMupline.length <= 2 || form.Sponsor.length <= 2){
+        return handleToaster("Please Tell Us Your Sponsor and Upline","warning");
+    }
       if (!checked){
           return handleToaster("Please Agree to the Terms And Agreements","error");
       }
@@ -321,7 +331,8 @@ function AuthContextProvider(props) {
                 axios.post(`${config.SERVER_URL}/upload/`,formData3, {
                     headers: { Authorization: `Bearer ${response.data.jwt}` }
                 }).then(res => {
-                  setSuccess(true);
+                    setSuccess({status: true,email: form.Email,password: form.Password});
+                  
                 })
              
 
@@ -333,8 +344,7 @@ function AuthContextProvider(props) {
 
           }).catch(error => {
           // Handle error.
-          setLoad(false);
-          setSuccess(true);
+          setSuccess({status: true,email: form.Email,password: form.Password});
           
           });
 
