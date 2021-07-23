@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 
         [theme.breakpoints.down('sm')]: {
             width: '100%',
-            margin: '70px 0px',
+            margin: '10px 0px',
         },
     },
     main:{

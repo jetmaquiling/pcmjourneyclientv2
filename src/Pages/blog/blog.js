@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
         padding: '0px 0px 0px 0px',
         width: '100%',
         [theme.breakpoints.down('xs')]: {
-            padding: '30px 0px 0px 0px',
+            padding: '0px 0px 0px 0px',
         },
     },
 
@@ -167,7 +167,7 @@ export default function Blog() {
   return (
     <div  container className={classes.root}  ref={myRef}>
 
-        <div  item md={12} style={{padding: '100px 0px 30px 0px' , width: '100%' ,  display:'flex' , justifyContent: 'center', textAlign: 'center'}}>
+        <div  item md={12} style={{padding: '30px 0px' , width: '100%' ,  display:'flex' , justifyContent: 'center', textAlign: 'center'}}>
 
         <Typography variant='h2' color='primary' className={classes.heading} ><b>Every Journey Has A Story</b></Typography>
         </div>

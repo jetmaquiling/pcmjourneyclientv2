@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     firstSection:{
         margin: '80px 00px 200px 00px',
         [theme.breakpoints.down('xs')]: {
-            margin: '120px 00px 50px 00px',
+            margin: '80px 00px 50px 00px',
             
         },     
     },

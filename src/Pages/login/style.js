@@ -7,7 +7,7 @@ export default makeStyles((theme) => ({
         margin: '20px auto 50px auto ',
         [theme.breakpoints.down('xs')]: {
             width: '90%',
-            margin: '70px auto 50px auto ',
+            margin: '20px auto 50px auto ',
         },    
     },
     h2Box:{
