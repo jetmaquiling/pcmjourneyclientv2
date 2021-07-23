@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
         margin: '0px 0px 150px 0px',
         alignContent: 'center',
         [theme.breakpoints.down('xs')]: {
-            height: '230vh',
+            height: '200vh',
           },
     },
 
@@ -30,16 +30,19 @@ const useStyles = makeStyles((theme) => ({
         backgroundRepeat: 'no-repeat',
         backgroundPosition: "center",
         backgroundSize: 'cover',
-        clipPath: 'polygon(0 11%, 100% 0, 100% 89%, 0% 100%)'
+        clipPath: 'polygon(0 11%, 100% 0, 100% 89%, 0% 100%)',
+        [theme.breakpoints.down('xs')]: {
+            clipPath: 'polygon(0 4%, 100% 0, 100% 96%, 0% 100%)',
+          },
     },
     titleBox:{
         height: '120px',
         width: '570px',
         backgroundColor: '#fff',
-        margin: '80px 0px 40px 0px',
+        margin: '100px 0px 40px 0px',
         clipPath: 'polygon(3% 0, 100% 0, 97% 100%, 0% 100%)',
         [theme.breakpoints.down('xs')]: {
-            margin: '150px 0px 40px 0px',
+            margin: '120px 0px 40px 0px',
             height: '55px',
             width: '250px',
           },

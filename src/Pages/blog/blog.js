@@ -16,7 +16,7 @@ import {Link} from 'react-router-dom';
 import AlbumIcon from '@material-ui/icons/Album';
 import config from '../../Config/config.json';
 import axios from 'axios';
-
+import LazyLoad from 'react-lazyload';
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
 
@@ -174,23 +174,24 @@ export default function Blog() {
 
         {blogs.map((blog, index)=>{
             return (
-                <Link to={`/blog/${blog.id}`}>
-                    <div item className={classes.rootItem}>
+                <LazyLoad height={70} once>
+                    <Link to={`/blog/${blog.id}`}>
+                        <div item className={classes.rootItem}>
 
-                        <div className={classes.imageBox} >
-                            <img  className={classes.image} src={blog.clipboard.url} />
+                            <div className={classes.imageBox} >
+                                <img  className={classes.image} src={blog.clipboard.url} />
+                            </div>
+                            
+                            <div className={classes.noteBox}  >
+                                    <Typography variant="h5" className={classes.title} >{blog.title}</Typography>
+                                    <Typography variant="body2" className={classes.author} >By {blog.author}</Typography>
+                                    <br/>
+                                    <Typography variant="body2" className={classes.description} >{blog.description}</Typography>
+                            </div>
+                            
                         </div>
-                        
-                        <div className={classes.noteBox}  >
-                                <Typography variant="h5" className={classes.title} >{blog.title}</Typography>
-                                <Typography variant="body2" className={classes.author} >By {blog.author}</Typography>
-                                <br/>
-                                <Typography variant="body2" className={classes.description} >{blog.description}</Typography>
-                        </div>
-                        
-                    </div>
-                </Link>
-
+                    </Link>
+                </LazyLoad>
             )
 
         })}

@@ -236,9 +236,6 @@ function AuthContextProvider(props) {
       if(form.Contact.length <= 9){
           return handleToaster("Your Contact Number is Invalid","warning");
       }
-      if (!form.ProfilePicture.name){
-        return handleToaster("You Don't Have Any Profile Picture! ","error");
-      }
       if(!(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(form.Email))){
           return handleToaster("Your Email is Invalid","warning");
       }

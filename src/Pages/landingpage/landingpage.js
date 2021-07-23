@@ -11,7 +11,7 @@ import MetaTags from 'react-meta-tags';
 import PCMSnippet from './PCMSnippet.png';
 import ClassLink from '../pcmjourney/pcmjourney';
 import Testimony from '../../Components/testimony/testimony';
-
+import LazyLoad from 'react-lazyload';
 // xs: 0,
 // sm: 600,
 // md: 1040,
@@ -261,7 +261,7 @@ const useStyles = makeStyles((theme) => ({
     },
     logoImage:{
         width: '300px',
-        margin: '0px auto 10px auto'
+        margin: '60px auto 10px auto'
     }
     
    
@@ -317,10 +317,13 @@ export default function LandingPage () {
                      <iframe className={classes.videoFrame}  src="https://www.youtube.com/embed/RxOz7TI1b7s" title="YouTube video player" frameBorder="0" allowFullScreen={true}></iframe>
                 </div>     
             </div>   
-            <ClassLink/>
+            <LazyLoad height={100} once>
+                <ClassLink/>
+            </LazyLoad>
             <div className={classes.h5} >
-                    <img src={PCMGold} className={classes.logoImage} />
-                    
+                    <LazyLoad height={100} once >
+                        <img src={PCMGold} className={classes.logoImage} />
+                    </LazyLoad>
                     <Typography variant="h5" >EXPLORE THE PCM JOURNEY</Typography>
                 </div> 
             <div className={classes.thirdSection} >
@@ -385,8 +388,15 @@ export default function LandingPage () {
                     </div>
                 </div>
             </div>
-            <Testimony/>
-            <Contact />
+            <LazyLoad height={100} once >
+                <Testimony/>
+            </LazyLoad>
+
+            <LazyLoad height={100} once >
+                <Contact />
+            </LazyLoad>
+
+            
         </div>
         
         

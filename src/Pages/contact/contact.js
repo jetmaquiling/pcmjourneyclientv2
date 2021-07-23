@@ -141,19 +141,22 @@ export default function Footer () {
                 console.log(`Success image Uploading now!`,res)
                 //AUTHENTICATION SUCCESS RESPONSE
                 //UPLOADING IMAGE IN SERVER
-                const formData = new FormData()
-                formData.append('files', form.Attachment);
-                formData.append('ref','request')
-                formData.append('refId', res.data.id);
-                formData.append('field', 'attachment');
-                axios.post(`${config.SERVER_URL}/upload`, formData).then(request => {
-                    console.log(request.ok)
-                    setSuccess(true);
-                }).catch(error => {
-                    console.log(error)
-                    ctx.handleToaster("Sorry. We are having a Problem With Your Picture!","warning");
-                    ctx.setLoad(false);
-                })
+                if(form.Attachment){
+                    const formData = new FormData()
+                    formData.append('files', form.Attachment);
+                    formData.append('ref','request')
+                    formData.append('refId', res.data.id);
+                    formData.append('field', 'attachment');
+                    axios.post(`${config.SERVER_URL}/upload`, formData).then(request => {
+                        console.log(request.ok)
+                        setSuccess(true);
+                    }).catch(error => {
+                        console.log(error)
+                        ctx.handleToaster("Sorry. We are having a Problem With Your Picture!","warning");
+                        ctx.setLoad(false);
+                    })
+                }
+                setSuccess(true);
                 
   
             }).catch(error => {
@@ -203,10 +206,6 @@ export default function Footer () {
                 </Button>
                 </DialogActions>
             </Dialog>
-            <Backdrop style={{zIndex: 9998}} className={classes.backdrop} open={ctx.load} >
-                <CircularProgress color="inherit" />
-            </Backdrop>
-
             
             <div className={classes.box1} />
                 

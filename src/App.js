@@ -16,6 +16,7 @@ import SignUp from './Pages/signup/signup';
 import LogIn from './Pages/login/login';
 import WatchVideo from "./Pages/dashboard/watch/watchvideo/watchvideo";
 
+import Typography from '@material-ui/core/Typography';
 import MuiAlert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
 import Button from '@material-ui/core/Button';
@@ -84,7 +85,12 @@ function App() {
         </Snackbar>
 
         <Backdrop style={{zIndex: 9998}} open={ctx.load} >
-                <CircularProgress color="inherit" />
+                <div style={{display:'flex', flexDirection: 'column',alignItems: 'center',textAlign: "center"}}>
+                  <Typography color="secondary" variant="h6" >Please Stand By... </Typography>
+                  <Typography color="secondary" variant="h6" >It Will Take A Few Minutes</Typography>
+                  <CircularProgress color="secondary" />
+                </div>
+                
         </Backdrop>
 
         <Router>
